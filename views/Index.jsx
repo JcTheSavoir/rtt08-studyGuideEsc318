@@ -1,20 +1,28 @@
-//This was not finished in class, so feel free to try and get this to work in your freetime
-
-import React from 'react'
-
+import React, { Component } from "react";
 export default class Index extends Component {
-    render() {
-        const {fruits} = this.props.fruits
-        return (
-            <>
-            {fruits.map((fruit, i)=>{
-                <li> 
-                    The {fruit.name} is {fruit.color} 
-                    and {fruit.readyToEat ? "It's ready to eat" : "Not Ready"}
-
+  render() {
+    const { fruits } = this.props;
+    console.log(fruits);
+    return (
+      <>
+        <div>
+          <h1>Fruits Index Page</h1>
+          <ul>
+            {fruits.map((fruit, i) => {
+              return (
+                <li key={i}>
+                  The <a href={`/fruits/${i}`}>{fruit.name}</a> is {fruit.color}{" "}
+                  <br></br>
+                  {fruit.readyToEat
+                    ? `It is ready to eat`
+                    : `It is not ready to eat`}
+                  <br />
                 </li>
+              );
             })}
-            </>
-        )
-    }
+          </ul>
+        </div>
+      </>
+    );
+  }
 }
